@@ -4,7 +4,8 @@ const _ = require("lodash");
 const bodyParser = require("body-parser");
 const thumb = require("node-thumbnail").thumb;
 const download = require("image-downloader");
-const jsonpatch = require("json-patch");
+//const jsonpatch = require("json-patch");
+const jsonpatch = require("fast-json-patch");
 
 var app = express();
 
@@ -57,6 +58,16 @@ app.post("/createThumbnail", (req, res) => {
     .catch(err => {
       console.error(err);
     });
+});
+
+// @route   POST /appyJsonPatch
+// @desc    Accepts a JSON object & patch, returns pathed object
+// @access  Private
+app.post("/appyJsonPatch", (req, res) => {
+  var originalObject = req.body.jsonObject;
+  var patch = req.body.patch;
+  originalObject = jsonpatch.applyPatch(originalObject, patch).newDocument;
+  res.send(`Your patched object: ${JSON.stringify(originalObject)}`);
 });
 
 app.listen(3000, () => {
