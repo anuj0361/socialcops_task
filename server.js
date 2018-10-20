@@ -4,8 +4,8 @@ const _ = require("lodash");
 const bodyParser = require("body-parser");
 const thumb = require("node-thumbnail").thumb;
 const download = require("image-downloader");
-//const jsonpatch = require("json-patch");
 const jsonpatch = require("fast-json-patch");
+var { checkToken } = require("./middleware/checkToken");
 
 var app = express();
 
@@ -32,7 +32,7 @@ app.post("/login", (req, res) => {
 // @route   POST /createThumbnail
 // @desc    Download image from URL & save it as a thumbnail
 // @access  Private
-app.post("/createThumbnail", (req, res) => {
+app.post("/createThumbnail", checkToken, (req, res) => {
   var imageURL = req.body.image;
   console.log(imageURL);
   options = {
@@ -63,7 +63,7 @@ app.post("/createThumbnail", (req, res) => {
 // @route   POST /appyJsonPatch
 // @desc    Accepts a JSON object & patch, returns pathed object
 // @access  Private
-app.post("/appyJsonPatch", (req, res) => {
+app.post("/appyJsonPatch", checkToken, (req, res) => {
   var originalObject = req.body.jsonObject;
   var patch = req.body.patch;
   originalObject = jsonpatch.applyPatch(originalObject, patch).newDocument;
