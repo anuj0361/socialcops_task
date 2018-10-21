@@ -16,7 +16,6 @@ router.post("/createThumbnail", checkToken, (req, res) => {
   }
 
   var imageURL = req.body.imageURL;
-  console.log(imageURL);
   options = {
     url: imageURL,
     dest: "images/photo.jpg" // Save to /path/to/dest/photo.jpg

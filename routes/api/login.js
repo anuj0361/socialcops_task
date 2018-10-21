@@ -24,7 +24,6 @@ router.post("/login", (req, res) => {
   var body = _.pick(req.body, ["email", "password"]);
   const token = generateAuthToken(body);
   res.header("x-auth", token).send(`Token Generated: ${token}`);
-  console.log(token);
 });
 
 module.exports = router;

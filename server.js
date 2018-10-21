@@ -14,6 +14,9 @@ app.use("/api", login);
 app.use("/api/patch", applyJSONPatch);
 app.use("/api/thumbnail", createThumbnail);
 
-const port = process.env.PORT || 3000;
+var server = app.listen(3000, () => console.log("Server is running"));
 
-app.listen(port, () => console.log("Server is running"));
+module.exports = {
+  server: server,
+  app: app
+};
