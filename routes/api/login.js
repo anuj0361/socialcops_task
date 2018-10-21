@@ -3,11 +3,12 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const _ = require("lodash");
 const validateLoginInput = require("../../validation/loginValidate");
+const keys = require("../../config/keys");
 
 // returns jwt signed token
 function generateAuthToken(body) {
   var access = "auth";
-  var token = jwt.sign({ email: body.email, access }, "abc123").toString();
+  var token = jwt.sign({ email: body.email, access }, keys.secret).toString();
   return token;
 }
 
