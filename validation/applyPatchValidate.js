@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const is_Empty = require("./is-empty");
 
 module.exports = function validatePatchInput(data) {
   let errors = {};
@@ -13,6 +14,6 @@ module.exports = function validatePatchInput(data) {
 
   return {
     errors,
-    isValid: isEmpty(errors)
+    isValid: is_Empty(errors)
   };
 };
