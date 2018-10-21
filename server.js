@@ -10,9 +10,9 @@ const app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/login", login);
-app.use("/applyJSONPatch", applyJSONPatch);
-app.use("/createThumbnail", createThumbnail);
+app.use("/api", login);
+app.use("/api/patch", applyJSONPatch);
+app.use("/api/thumbnail", createThumbnail);
 
 const port = process.env.PORT || 3000;
 

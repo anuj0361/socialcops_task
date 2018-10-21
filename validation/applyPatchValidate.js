@@ -1,18 +1,14 @@
-const Validator = require("validator");
-const isEmpty = require("./is-empty");
+const _ = require("lodash");
 
 module.exports = function validatePatchInput(data) {
   let errors = {};
 
-  data.jsonObject = !isEmpty(data.jsonObject) ? data.jsonObject : "";
-  data.patch = !isEmpty(data.patch) ? data.patch : "";
-
-  if (Validator.isEmpty(data.jsonObject)) {
-    errors.email = "Email field is required";
+  if (_.isEmpty(data.jsonObject)) {
+    errors.jsonObject = "jsonObject field is required";
   }
 
-  if (Validator.isEmpty(data.patch)) {
-    errors.password = "Password field is required";
+  if (_.isEmpty(data.patch)) {
+    errors.patch = "patch field is required";
   }
 
   return {

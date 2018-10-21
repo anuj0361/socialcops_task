@@ -5,9 +5,7 @@ var checkToken = (req, res, next) => {
   try {
     decoded = jwt.verify(req.headers.auth, "abc123");
   } catch (e) {
-    return res.json({
-      error: "Invalid token"
-    });
+    return res.status(401).send("Invalid token");
   }
 
   console.log(decoded);

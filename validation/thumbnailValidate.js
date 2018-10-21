@@ -7,7 +7,7 @@ module.exports = function validateThumbnailInput(data) {
   data.imageURL = !isEmpty(data.imageURL) ? data.imageURL : "";
 
   if (Validator.isEmpty(data.imageURL)) {
-    errors.email = "Email field is required";
+    errors.imageURL = "Image field is required";
   }
 
   return {
