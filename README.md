@@ -24,14 +24,14 @@ API Usage
 1)	Login API: Open postman and and provide URL: POST localhost:3000/api/login
 In body pass two parameters “email” & “password”, click on send, it should return you a JWT token.
 2)	PATCH API: Open postman and and provide URL: POST localhost:3000/api/patch/applyJSONPatch
-In body provide 2 parameters “jsonObject” & “patch” along with their values. Also provide a auth token obtained in login API, click on send, it should return you a patched object
+In body provide 2 parameters “jsonObject” & “patch” along with their values. Also in header provide key=auth & value=token(this is the token that you get in Login API), click on send, it should return you a patched object
 Ex: 
 {
     "jsonObject": {"foo": [1, 3]},
     "patch": [{"op": "add", "path": "/foo/1", “value”: 2}]
 }
 3)	Thumbnail API: Open postman and and provide URL: POST localhost:3000/api/thumbnail/createThumbnail
-In body provide 1 parameters “imageURL”along with a public URL value. Also provide a auth token obtained in login API, click on send, it should save original image & thumbnailed image in image directory of your project.
+In body provide 1 parameters “imageURL”along with a public URL value. Also in header provide key=auth & value=token(this is the token that you get in Login API), click on send, it should save original image & thumbnailed image in image directory of your project.
 Ex: https://wallpaperbrowse.com/media/images/750814.jpg
 
 
