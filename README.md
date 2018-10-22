@@ -39,3 +39,7 @@ Test cases
 
 1)	For running test suite, run npm test on the terminal then it should run all the TCs that I have written
 
+Javascript Linter
+
+1) Used StandardJS for Linting
+
